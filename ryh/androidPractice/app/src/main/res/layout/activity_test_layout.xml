@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.yueh.androidpractice.TestLayoutActivity">
+    <LinearLayout
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="垂直排列的LinearLayout：" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:background="#999" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:background="#999" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:background="#999" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="水平排列的LinearLayout：" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:background="#999" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:background="#999" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:background="#999" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="水平排列的LinearLayout，最后一个item占领剩余宽度：" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:background="#999" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:background="#999" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:background="#999" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="#F00" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="水平排列的LinearLayout,item 平均分配宽度：" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="#999" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="#999" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="#999" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="RelativeLayout,item相对于父节点上下左右和居中" />
+        <RelativeLayout
+            android:background="#aaa"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+            <View
+                android:background="#000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <View
+                android:layout_alignParentRight="true"
+                android:background="#000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <View
+                android:layout_alignParentBottom="true"
+                android:background="#000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <View
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="#000"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:gravity="center"
+                android:text="centerInParent"
+                android:id="@+id/center_item_view_1"
+                android:layout_centerInParent="true"
+                android:background="#f00"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="RelativeLayout,item相对于兄弟节点上下左右" />
+        <RelativeLayout
+            android:background="#aaa"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+            <TextView
+                android:gravity="center"
+                android:text="centerInParent"
+                android:id="@+id/center_item_view_2"
+                android:layout_centerInParent="true"
+                android:background="#f00"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+            <TextView
+                android:background="#fff"
+                android:text="toRightOf"
+                android:layout_toRightOf="@+id/center_item_view_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:background="#fff"
+                android:text="toLeftOf"
+                android:layout_toLeftOf="@+id/center_item_view_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/center_item_view_2"
+                android:background="#fff"
+                android:text="above" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/center_item_view_2"
+                android:background="#fff"
+                android:text="below" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="RelativeLayout,item对准兄弟节点的上下左右边线" />
+        <RelativeLayout
+            android:background="#aaa"
+            android:layout_width="300dp"
+            android:layout_height="300dp">
+            <TextView
+                android:gravity="center"
+                android:text="centerInParent"
+                android:id="@+id/center_item_view_3"
+                android:layout_centerInParent="true"
+                android:background="#f00"
+                android:layout_width="150dp"
+                android:layout_height="100dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/center_item_view_3"
+                android:background="#fff"
+                android:text="alignTop" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/center_item_view_3"
+                android:background="#fff"
+                android:text="alignBottom" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/center_item_view_3"
+                android:background="#fff"
+                android:text="alignLeft" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/center_item_view_3"
+                android:background="#fff"
+                android:text="alignRight" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

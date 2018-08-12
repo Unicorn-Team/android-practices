@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.yueh.androidpractice.MainActivity">
+
+    <Button
+        android:id="@+id/fragment_manager_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="activity中管理fragment"/>
+    <Button
+        android:id="@+id/fragment_msg_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="activity与fragment通信"/>
+    <Button
+        android:id="@+id/layout_practice_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="布局实战"/>
+    <Button
+        android:id="@+id/adapter_layout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="通过适配器布局"/>
+    <Button
+        android:visibility="gone"
+        android:id="@+id/activity_task_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="activity任务栈和返回栈"/>
+</LinearLayout>
