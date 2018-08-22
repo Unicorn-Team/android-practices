@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:paddingRight="20dp"
+    android:layout_marginTop="6dp">
 
     <TextView
         android:id="@+id/entranceMainCardHead"
