@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <TextView
+        android:id="@+id/entranceMainCardHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightBlack"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="- ONE STORY -"/>
+
+
+    <TextView
+        android:id="@+id/entranceMainCardTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/deepBlack"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/entranceMainCardAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightBlack"
+        android:textSize="10sp"
+        android:layout_marginBottom="10dp"
+        android:text=""/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/test_image2" />
+
+    <TextView
+        android:id="@+id/entranceMainCardContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightBlack"
+        android:textSize="10sp"
+        android:layout_marginBottom="20dp"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/entranceMainCardTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/lightBlack"
+        android:textSize="8sp"
+        android:layout_marginBottom="10dp"
+        android:text=""/>
+
+</LinearLayout>
+

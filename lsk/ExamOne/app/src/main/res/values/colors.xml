@@ -6,4 +6,6 @@
     <color name="colorYellow">#879076</color>
     <color name="deepBlack">#000000</color>
     <color name="lightBlack">#999999</color>
+    <color name="lightWhite">#cccccc</color>
+    <color name="white">#ffffff</color>
 </resources>
