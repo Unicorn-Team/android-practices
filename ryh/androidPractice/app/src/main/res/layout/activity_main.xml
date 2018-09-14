@@ -32,4 +32,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="activity任务栈和返回栈"/>
+    <Button
+        android:visibility="visible"
+        android:id="@+id/activity_broadcast_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="广播"/>
+    <Button
+        android:visibility="visible"
+        android:id="@+id/activity_okhttp_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="网络"/>
+    <Button
+        android:visibility="visible"
+        android:id="@+id/activity_db_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="数据库"/>
 </LinearLayout>
