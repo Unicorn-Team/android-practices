@@ -5,12 +5,17 @@
     android:id="@+id/fragmentMainEntrance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorAccent">
+    android:orientation="vertical">
 
+    <include
+        android:id="@+id/entranceMainHeadBar"
+        layout="@layout/entrance_main_head_bar"/>
 
-    <TextView android:text="text1"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/entranceMainRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/lightWhite">
 
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>
