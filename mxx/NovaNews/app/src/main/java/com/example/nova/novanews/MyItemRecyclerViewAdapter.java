@@ -5,11 +5,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.nova.novanews.ItemFragment.OnListFragmentInteractionListener;
 import com.example.nova.novanews.dummy.DummyContent.DummyItem;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -19,14 +23,17 @@ import java.util.List;
  */
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private List<DummyItem> mValues;
+    private OnListFragmentInteractionListener mListener;
 
     public MyItemRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
+    public void addItems(DummyItem item) {
+        mValues.add(item);
+    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -40,6 +47,9 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mCardCategory.setText(mValues.get(position).cardCategory);
         holder.mCardTitle.setText(mValues.get(position).cardTitle);
         holder.mCardSubTitle.setText(mValues.get(position).cardSubTitle);
+        holder.mCardDesc.setText(mValues.get(position).cardDesc);
+        holder.mCardTime.setText(mValues.get(position).cardTime);
+        Glide.with(holder.mCardView).load(mValues.get(position).posterUrl).into(holder.mCardPoster);
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +72,9 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final TextView mCardCategory;
         public final TextView mCardTitle;
         public final TextView mCardSubTitle;
+        public final ImageView mCardPoster;
+        public final TextView mCardDesc;
+        public final TextView mCardTime;
         public DummyItem mItem;
 
         public ViewHolder(View view) {
@@ -70,6 +83,10 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             mCardCategory = (TextView) view.findViewById(R.id.card_category);
             mCardTitle = (TextView) view.findViewById(R.id.card_title);
             mCardSubTitle = (TextView) view.findViewById(R.id.card_subTitle);
+            mCardPoster = (ImageView) view.findViewById(R.id.card_image);
+            mCardDesc = (TextView) view.findViewById(R.id.card_main_content);
+            mCardTime = (TextView) view.findViewById(R.id.card_time);
+
         }
 
     }

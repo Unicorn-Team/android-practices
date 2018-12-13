@@ -1,6 +1,7 @@
 package com.example.nova.novanews;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.nova.novanews.dummy.DummyContent;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +22,8 @@ import java.util.List;
 public class OneFragment extends Fragment {
     RecyclerView mRecyclerView;
     List<DummyContent.DummyItem> dummyItems;
+
+    Handler handler = new Handler();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,9 +39,48 @@ public class OneFragment extends Fragment {
 
     private void initializeData() {
         dummyItems = new ArrayList<>();
-        dummyItems.add(new DummyContent.DummyItem("问答", "我们这一代未来怎么养老", "庄晓达"));
-        dummyItems.add(new DummyContent.DummyItem("音乐", "感情需要维系，而我并不擅长", "文/清末"));
-        dummyItems.add(new DummyContent.DummyItem("影视", "我已经不记得曾经的我了，但身体记得所有事情", "文/挫样"));
-        dummyItems.add(new DummyContent.DummyItem("One Storay", "炎", "文/牛海棠"));
+        new Thread() {
+            public void run() {
+                try {
+                    String movieResult = GetData.getMovieData("https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=somemessage&udid=dddddddddddddddddddddd");
+                    JSONObject jsonObject = new JSONObject(movieResult);
+                    final JSONArray subjectsArray = jsonObject.optJSONArray("subjects");
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            for(int i = 0; i<subjectsArray.length(); i++) {
+                                JSONObject eachMovie = subjectsArray.optJSONObject(i);
+                                String movieTitle = eachMovie.optString("original_title");
+                                String publishDate = eachMovie.optString("mainland_pubdate");
+                                JSONArray directors = eachMovie.optJSONArray("directors");
+                                JSONObject director = directors.optJSONObject(0);
+                                String directorName = director.optString("name");
+                                JSONObject posters = eachMovie.optJSONObject("images");
+                                String posterUrl = posters.optString("large");
+                                JSONArray genres = eachMovie.optJSONArray("genres");
+                                String genresString = "";
+                                for(int j = 0;j<genres.length(); j++) {
+                                    genresString = genres.optString(j) + " ";
+                                }
+                                JSONArray actors = eachMovie.optJSONArray("casts");
+                                String actorName = "";
+                                for(int k = 0; k<actors.length(); k++) {
+                                    JSONObject actorObject = actors.optJSONObject(k);
+                                    actorName = actorObject.optString("name") + " ";
+
+                                }
+                                dummyItems.add(new DummyContent.DummyItem(genresString, movieTitle, directorName, posterUrl, actorName, publishDate));
+                                mRecyclerView.setAdapter(new MyItemRecyclerViewAdapter(dummyItems, null));
+                            }
+                        }
+                    });
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
     }
 }
