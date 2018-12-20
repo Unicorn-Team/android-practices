@@ -34,6 +34,11 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     public void addItems(DummyItem item) {
         mValues.add(item);
     }
+
+    public void updateData(List<DummyItem> items) {
+        mValues = items;
+        notifyDataSetChanged();
+    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())

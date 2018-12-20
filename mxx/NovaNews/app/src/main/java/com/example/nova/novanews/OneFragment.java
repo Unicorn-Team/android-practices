@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.nova.novanews.dummy.DummyContent;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,9 +20,10 @@ import java.util.List;
 
 public class OneFragment extends Fragment {
     RecyclerView mRecyclerView;
-    List<DummyContent.DummyItem> dummyItems;
+    List<DummyContent.DummyItem> dummyItems = new ArrayList<>();
 
     Handler handler = new Handler();
+    MyItemRecyclerViewAdapter myItemRecyclerViewAdapter = new MyItemRecyclerViewAdapter(dummyItems, null);
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -31,14 +31,12 @@ public class OneFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_one, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
         initializeData();
-        mRecyclerView.setAdapter(new MyItemRecyclerViewAdapter(dummyItems, null));
+        mRecyclerView.setAdapter(myItemRecyclerViewAdapter);
         return view;
     }
 
     private void initializeData() {
-        dummyItems = new ArrayList<>();
         new Thread() {
             public void run() {
                 try {
@@ -70,8 +68,8 @@ public class OneFragment extends Fragment {
 
                                 }
                                 dummyItems.add(new DummyContent.DummyItem(genresString, movieTitle, directorName, posterUrl, actorName, publishDate));
-                                mRecyclerView.setAdapter(new MyItemRecyclerViewAdapter(dummyItems, null));
                             }
+                            myItemRecyclerViewAdapter.updateData(dummyItems);
                         }
                     });
 
