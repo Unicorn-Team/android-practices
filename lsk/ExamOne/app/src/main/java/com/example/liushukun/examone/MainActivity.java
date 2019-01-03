@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.liushukun.examone.Adapter.Entrance.Fragment.EntranceFragmentAdapter;
+import com.example.liushukun.examone.Model.RequestModel;
+import com.example.liushukun.examone.Request.RequestCenter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
         });
+
+        RequestCenter.getDataByUrl(new RequestModel());
     }
 
     @Override
