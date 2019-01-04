@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.liushukun.examone.Adapter.Entrance.Fragment.EntranceFragmentAdapter;
+import com.example.liushukun.examone.Bean.MainFragmentBean;
+import com.example.liushukun.examone.Fragment.Main.MainEntranceFragment;
 import com.example.liushukun.examone.Model.RequestModel;
 import com.example.liushukun.examone.Request.RequestCenter;
 
@@ -13,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private EntranceFragmentAdapter entranceFragmentAdapter;
+    private MainFragmentBean mainFragmentData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
 
-        viewPager.setAdapter(new EntranceFragmentAdapter(getSupportFragmentManager(), 3));
+        entranceFragmentAdapter = new EntranceFragmentAdapter(getSupportFragmentManager(), 3);
+
+        viewPager.setAdapter(entranceFragmentAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -37,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {}
         });
 
-        RequestCenter.getDataByUrl(new RequestModel());
+        MainEntranceFragment mainEntranceFragment = (MainEntranceFragment)entranceFragmentAdapter.getItem(0);
+        RequestCenter.getDataByUrl(new RequestModel(mainEntranceFragment));
+
     }
 
     @Override
