@@ -6,10 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.liushukun.examone.Bean.MainFragmentBean;
+import com.example.liushukun.examone.Bean.MainFragmentItemStoriesBean;
 import com.example.liushukun.examone.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class CardListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<HashMap<String, String>> list;
@@ -19,6 +23,22 @@ public class CardListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public CardListAdapter(ArrayList<HashMap<String, String>> data) {
         list = data;
+    }
+
+    public void updateArrayList(MainFragmentBean mainFragmentData) {
+        ArrayList<HashMap<String, String>> mainList = new ArrayList<HashMap<String, String>>();
+
+        List<MainFragmentItemStoriesBean> storiesBeansList = mainFragmentData.getStories();
+        HashMap<String, String> map;
+        for (int i = 0, size = storiesBeansList.size(); i < size; i++) {
+            MainFragmentItemStoriesBean story = storiesBeansList.get(i);
+            map = new HashMap<String, String>();
+            map.put("type", "0");
+            map.put("photo", story.getGa_prefix());
+            map.put("slogan", story.getTitle());
+            map.put("author", "");
+            this.list.add(i, map);
+        }
     }
 
     @Override
